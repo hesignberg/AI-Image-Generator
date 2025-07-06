@@ -16,6 +16,8 @@ import user2 from "assets/images/avatar/user-2.svg";
 
 const TopBar = () => {
     const [isUpdateSubscription, setIsUpdateSubscription] = useState<boolean>(false);
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+console.log("user",user.username)
 
     const toggleUpdateSubscription = () => {
         setIsUpdateSubscription(!isUpdateSubscription);
@@ -253,8 +255,8 @@ const TopBar = () => {
                                                     <img src={user2} alt="user" />
                                                 </div>
                                                 <div className="user_naim-information">
-                                                    <h3 className="title">MR.Crow Kader</h3>
-                                                    <span className="desig">CEO, Valo How Masud</span>
+                                                    <h3 className="title">{user.username}</h3>
+                                                    <span className="desig">{user.email}</span>
                                                 </div>
                                             </div>
                                             <div className="user_body_content">
