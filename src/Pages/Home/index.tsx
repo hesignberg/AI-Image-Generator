@@ -17,7 +17,7 @@ const Home = () => {
                     <div className="inner">
                         <h3 className="title">Generate New Ideas for Your Content</h3>
                         <p className="dsic">
-                            IntellectAi is the place to create, publish and monetize content using the power of AI. Use the IntellectAi AI Studio to create amazing generative images, music, and audio.
+                            Lucid Layers is the place to create, publish and monetize content using the power of AI. Use the Lucid Layers AI Studio to create amazing generative images, music, and audio.
                         </p>
                         <Link to="#" className="rts-btn btn-blur">Try Now</Link>
                         <div className="inner-right-iamge">
@@ -48,33 +48,33 @@ const Home = () => {
                             </div>
                             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div className="single-image-generator">
-                                    <Link to="/chatbot" className="thumbnail">
+                                    <Link to="/" className="thumbnail">
                                         <img src={generator2} alt="images" />
                                     </Link>
                                     <div className="inner-content">
                                         <div className="left-content-area">
-                                            <h5 className="title">Content Generator</h5>
+                                            <h5 className="title">Video Generator</h5>
                                             <p className="disc">
                                                 Our text-to-image feature turns your words into beautiful AI visuals.
                                             </p>
                                         </div>
-                                        <Link to="/chatbot" className="rts-btn btn-primary">Generate</Link>
+                                        <Link to="/" className="rts-btn btn-primary">Generate</Link>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div className="single-image-generator">
-                                    <Link to="/voicegenerator" className="thumbnail">
+                                    <Link to="/" className="thumbnail">
                                         <img src={generator3} alt="images" />
                                     </Link>
                                     <div className="inner-content">
                                         <div className="left-content-area">
-                                            <h5 className="title">Voice Generator</h5>
+                                            <h5 className="title">3D Model Generator</h5>
                                             <p className="disc">
                                                 Our text-to-image feature turns your words into beautiful AI visuals.
                                             </p>
                                         </div>
-                                        <Link to="/voicegenerator" className="rts-btn btn-primary">Generate</Link>
+                                        <Link to="/" className="rts-btn btn-primary">Generate</Link>
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="copyright-area-bottom">
-                    <p> <Link to="#">Reactheme©</Link> 2024. All Rights Reserved.</p>
+                    <p> <Link to="#">Lucid Layers©</Link> 2025. All Rights Reserved.</p>
                 </div>
             </div>
         </>

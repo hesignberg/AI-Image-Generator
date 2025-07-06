@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
+import { BookOpenText, Gem, House, Images, LifeBuoy, LogIn } from 'lucide-react';
+
 //import images
 import icons01 from "assets/images/icons/01.png";
 import icons02 from "assets/images/icons/02.png";
@@ -40,7 +42,7 @@ const LeftSidebar = () => {
                         <Link to="/" className={`single-menu openuptip ${location.pathname === "/" ? "active" : ""
                             }`}>
                             <div className="icon">
-                                <img src={icons01} alt="icons" />
+                                <House color="#ffffff" />
                             </div>
                             <p>Home</p>
                         </Link>
@@ -49,27 +51,27 @@ const LeftSidebar = () => {
                                 }`}
                         >
                             <div className="icon">
-                                <img src={icons02} alt="icons" />
+                                <Images color="#ffffff" />
                             </div>
-                            <p>Community Feed</p>
+                            <p>Gallery</p>
                         </Link>
                         <Link to="/community-details"
                             className={`single-menu openuptip ${location.pathname === "/community-details" ? "active" : ""
                                 }`}>
                             <div className="icon">
-                                <img src={icons02} alt="icons" />
+                                <BookOpenText color="#ffffff" />
                             </div>
-                            <p>Community Details</p>
+                            <p>Terms & Conditions</p>
                         </Link>
                         <Link to="/manage-subscription" className={`single-menu openuptip ${location.pathname === "/manage-subscription" ? "active" : ""
                             }`}>
                             <div className="icon">
-                                <img src={icons03} alt="icons" />
+                                <Gem color="#ffffff" />
                             </div>
-                            <p>Manage Subscription</p>
+                            <p>Pricing</p>
                         </Link>
                     </div>
-                    <div className="single-menu-wrapper">
+                    {/* <div className="single-menu-wrapper">
                         <Link to="/chatbot" className={`single-menu openuptip ${location.pathname === "/chatbot" ? "active" : ""
                             }`}>
                             <div className="icon">
@@ -91,15 +93,21 @@ const LeftSidebar = () => {
                             </div>
                             <p>Voice Generate</p>
                         </Link>
-                    </div>
+                    </div> */}
                     <div className="single-menu-wrapper">
-                        <Link to="/register" className="single-menu">
+                        <Link to="/faq" className="single-menu">
                             <div className="icon">
-                                <img src={icons07} alt="icons" />
+                                <LifeBuoy color="#ffffff" />
                             </div>
-                            <p>Register</p>
+                            <p>FAQs</p>
                         </Link>
-                        <Link
+                        <Link to="/login" className="single-menu">
+                            <div className="icon">
+                                <LogIn color="#ffffff" />
+                            </div>
+                            <p>Login</p>
+                        </Link>
+                        {/* <Link
                             onClick={handleSettingsClick}
                             aria-expanded={open}
                             className="collapse-btn collapsed single-menu" to="#" role="button">
@@ -107,8 +115,8 @@ const LeftSidebar = () => {
                                 <img src={icons08} alt="icons" />
                             </div>
                             <p>Settings</p>
-                        </Link>
-                        <Collapse in={open}>
+                        </Link> */}
+                        {/* <Collapse in={open}>
                             <ul className="submenu rts-default-sidebar-list">
                                 <li>
                                     <Link to="/faq" className={`${location.pathname === "/faq" ? "active" : ""}`} onClick={handleFaqClick}>
@@ -130,16 +138,16 @@ const LeftSidebar = () => {
                                     </Link>
                                 </li>
                             </ul>
-                        </Collapse>
-                        <Link to="/login" className="single-menu">
+                        </Collapse> */}
+                        {/* <Link to="/login" className="single-menu">
                             <div className="icon">
-                                <img src={icons09} alt="icons" />
+                                <LogIn color="#ffffff" />
                             </div>
                             <p>Logout</p>
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
-                <div className="bottom-user">
+                {/* <div className="bottom-user">
                     <div className="user-wrapper">
                         <img src={avatar02} alt="avatar" />
                         <div className="info">
@@ -154,7 +162,7 @@ const LeftSidebar = () => {
                             Upgrade To Pro
                         </button>
                     </div>
-                </div>
+                </div> */}
             </div>
         </>
     );

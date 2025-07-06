@@ -17,7 +17,7 @@ const menuData = [
         subMenu: [],
     },
     {
-        title: "Community Feed",
+        title: "Gallery",
         link: "/community-feed",
         icon: icons02,
         subMenu: [],

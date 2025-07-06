@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Nav, Tab, TabContainer } from "react-bootstrap";
-
+import { Box, Film, Image } from 'lucide-react';
 //import images
 import icons10 from "assets/images/icons/10.png";
 import icons11 from "assets/images/icons/11.png";
@@ -26,7 +26,7 @@ const CommunityFeed = () => {
                     <TabContainer defaultActiveKey="home">
                         <div className="nav-search-between">
                             <div className="left-area">
-                                <h4 className="title">Community Feed</h4>
+                                <h4 className="title">Explore</h4>
                                 <form action="#">
                                     <input type="text" placeholder="Search Feed..." />
                                     <button>Search</button>
@@ -36,20 +36,20 @@ const CommunityFeed = () => {
                             <Nav className="nav-pills mb-3" id="pills-tab" role="tablist">
                                 <Nav.Item as="li" role="presentation">
                                     <Nav.Link as="button" eventKey="home">
-                                        <img src={icons10} alt="icons" />
+                                        <Image color="#ffffff" size={20} />
                                         Image
                                     </Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item as="li" role="presentation">
                                     <Nav.Link as="button" eventKey="profile">
-                                        <img src={icons11} alt="icons" />
-                                        Content
+                                        <Film color="#ffffff" size={20} />
+                                        Video
                                     </Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item as="li" role="presentation">
                                     <Nav.Link as="button" eventKey="contact">
-                                        <img src={icons12} alt="icons" />
-                                        Voice
+                                        <Box color="#ffffff" size={20} />
+                                        3D Model
                                     </Nav.Link>
                                 </Nav.Item>
                             </Nav>
@@ -73,7 +73,7 @@ const CommunityFeed = () => {
                 </div>
             </div>
             <div className="copyright-area-bottom">
-                <p><Link to="#">Reactheme©</Link> 2024. All Rights Reserved.</p>
+                <p><Link to="#">Lucid Layers©</Link> 2025. All Rights Reserved.</p>
             </div>
         </>
     )

@@ -26,7 +26,7 @@ const ManageSubscription = ({
                                         <h2 className="title">
                                             Manage Subscription
                                         </h2>
-                                        <span className="pre-title-bg">Want to get more out of Imagine AI? Subscribe to one of our professional plans.</span>
+                                        <span className="pre-title-bg">Want to get more out of Lucid Layers? Subscribe to one of our professional plans.</span>
                                     </div>
                                 </div>
                             </Row>

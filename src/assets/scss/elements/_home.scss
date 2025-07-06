@@ -211,12 +211,12 @@
             }
         }
         .inner{
-            height: calc(100vh - 300px);
+            height: calc(100vh);
             overflow: scroll;
             -ms-overflow-style: none;
             scrollbar-width: none;
             @media #{$smlg-device} {
-                height: calc(100vh - 288px);
+                height: calc(100vh);
             }
         }
         .single-menu-wrapper{

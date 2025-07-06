@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 // Define theme mode constants
 export enum THEME_MODE {
-    LIGHT = "light",
+    LIGHT = "dark",
     DARK = "dark"
 };
 

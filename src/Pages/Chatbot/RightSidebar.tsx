@@ -68,7 +68,7 @@ const RightSidebar = () => {
                         </div>
                     </div>
                     <div className="chat-history-area-start">
-                        <h6 className="title">11/03/2024</h6>
+                        <h6 className="title">11/03/2025</h6>
                         <div className="single-history">
                             <p>Online School Education</p>
                             <img src={icons05} alt="icons" />
@@ -91,7 +91,7 @@ const RightSidebar = () => {
                         </div>
                     </div>
                     <div className="chat-history-area-start">
-                        <h6 className="title">28/04/2024</h6>
+                        <h6 className="title">28/04/2025</h6>
                         <div className="single-history">
                             <p>Online School Education</p>
                             <img src={icons05} alt="icons" />

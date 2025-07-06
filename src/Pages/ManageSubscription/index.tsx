@@ -45,7 +45,7 @@ const ManageSubscription = () => {
                                     <h2 className="title">
                                         Manage Subscription
                                     </h2>
-                                    <span className="pre-title-bg">Want to get more out of Imagine AI? Subscribe to one of our professional plans.</span>
+                                    <span className="pre-title-bg">Want to get more out of Lucid Layers? Subscribe to one of our professional plans.</span>
                                 </div>
                             </div>
                         </Row>
@@ -54,14 +54,14 @@ const ManageSubscription = () => {
                             <div className="tab-area-pricing-two mt--30">
                                 <Nav className="nav-tabs pricing-button-one two" id="myTab" role="tablist">
                                     <Nav.Item as="li" role="presentation">
-                                        <Nav.Link as="button" eventKey="home" id="home-tab">Monthly Pricing</Nav.Link>
+                                        <Nav.Link as="button" eventKey="home" id="home-tab">Lifetime Plans</Nav.Link>
                                     </Nav.Item>
-                                    <Nav.Item as="li" role="presentation">
+                                    {/* <Nav.Item as="li" role="presentation">
                                         <Nav.Link as="button" eventKey="profile" id="profile-tab">Annual Pricing</Nav.Link>
                                     </Nav.Item>
                                     <li className="save-badge">
                                         <span>SAVE 25%</span>
-                                    </li>
+                                    </li> */}
                                 </Nav>
                                 <Tab.Content className="mt--20" id="myTabContent">
                                     <Tab.Pane eventKey="home">
@@ -72,8 +72,8 @@ const ManageSubscription = () => {
                                                     <div className="head">
                                                         <span className="top">Basic</span>
                                                         <div className="date-use">
-                                                            <h4 className="title">$Free</h4>
-                                                            <span>/month</span>
+                                                            <h4 className="title">$200</h4>
+                                                            {/* <span>/month</span> */}
                                                         </div>
                                                     </div>
                                                     <div className="body">
@@ -114,10 +114,10 @@ const ManageSubscription = () => {
 
                                                 <div className="single-pricing-single-two active">
                                                     <div className="head">
-                                                        <span className="top">Diamond</span>
+                                                        <span className="top">Gold</span>
                                                         <div className="date-use">
-                                                            <h4 className="title">$399</h4>
-                                                            <span>/Year</span>
+                                                            <h4 className="title">$500</h4>
+                                                            {/* <span>/Year</span> */}
                                                         </div>
                                                     </div>
                                                     <div className="body">
@@ -158,10 +158,10 @@ const ManageSubscription = () => {
 
                                                 <div className="single-pricing-single-two">
                                                     <div className="head">
-                                                        <span className="top">Premium</span>
+                                                        <span className="top">Diamond</span>
                                                         <div className="date-use">
-                                                            <h4 className="title">$199</h4>
-                                                            <span>/Year</span>
+                                                            <h4 className="title">$800</h4>
+                                                            {/* <span>/Year</span> */}
                                                         </div>
                                                     </div>
                                                     <div className="body">
@@ -395,7 +395,7 @@ const ManageSubscription = () => {
             </div>
 
             <div className="copyright-area-bottom">
-                <p> <Link to="#">Reactheme©</Link> 2024. All Rights Reserved.</p>
+                <p> <Link to="#">Lucid Layers©</Link> 2025. All Rights Reserved.</p>
             </div>
         </>
     );

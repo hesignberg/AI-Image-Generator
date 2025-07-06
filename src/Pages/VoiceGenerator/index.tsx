@@ -189,7 +189,7 @@ const VoiceGenerator = () => {
                     <button><i className="fa-regular fa-arrow-up"></i></button>
                 </form>
                 <div className="copyright-area-bottom">
-                    <p> <Link to="#">Reactheme©</Link> 2024. All Rights Reserved.</p>
+                    <p> <Link to="#">Lucid Layers©</Link> 2025. All Rights Reserved.</p>
                 </div>
 
             </div>

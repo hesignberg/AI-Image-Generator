@@ -90,7 +90,7 @@ console.log("user",user.username)
                                 </div>
                             </div>
                             <div className="header-right">
-                                <div className="button-area">
+                                {/* <div className="button-area">
                                     <Link
                                         onClick={toggleUpdateSubscription}
                                         to="#"
@@ -99,7 +99,7 @@ console.log("user",user.username)
                                         <img src={icons02} alt="icons" />
                                         Update
                                     </Link>
-                                </div>
+                                </div> */}
                                 <div className="action-interactive-area__header">
                                     <div className="single_action__haeader search-action openuptip" >
                                         <svg onClick={toggleSearch} width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -212,7 +212,7 @@ console.log("user",user.username)
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="single_action__haeader language  user_avatar__information openuptip">
+                                    {/* <div className="single_action__haeader language  user_avatar__information openuptip">
                                         <svg onClick={toggleLanguage} width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path fillRule="evenodd" clipRule="evenodd" d="M11.25 3.125V4.375H9.25C8.83816 6.14196 7.99661 7.77997 6.8 9.14375C7.70414 10.0661 8.79525 10.7843 10 11.25L9.55625 12.4C8.20367 11.8567 6.97802 11.0396 5.95625 10C4.9156 11.0255 3.68974 11.8442 2.34375 12.4125L1.875 11.25C3.07285 10.7429 4.16632 10.0182 5.1 9.1125C4.2552 8.08229 3.61842 6.89788 3.225 5.625H4.5375C4.85587 6.57383 5.3405 7.45844 5.96875 8.2375C6.93251 7.12787 7.6162 5.80335 7.9625 4.375H1.25V3.125H5.625V1.25H6.875V3.125H11.25ZM18.75 18.125H17.4062L16.4062 15.625H12.125L11.125 18.125H9.78125L13.5312 8.75H15L18.75 18.125ZM14.2625 10.275L12.625 14.375H15.9062L14.2625 10.275Z" fill="black" />
                                             <path fillRule="evenodd" clipRule="evenodd" d="M11.25 3.125V4.375H9.25C8.83816 6.14196 7.99661 7.77997 6.8 9.14375C7.70414 10.0661 8.79525 10.7843 10 11.25L9.55625 12.4C8.20367 11.8567 6.97802 11.0396 5.95625 10C4.9156 11.0255 3.68974 11.8442 2.34375 12.4125L1.875 11.25C3.07285 10.7429 4.16632 10.0182 5.1 9.1125C4.2552 8.08229 3.61842 6.89788 3.225 5.625H4.5375C4.85587 6.57383 5.3405 7.45844 5.96875 8.2375C6.93251 7.12787 7.6162 5.80335 7.9625 4.375H1.25V3.125H5.625V1.25H6.875V3.125H11.25ZM18.75 18.125H17.4062L16.4062 15.625H12.125L11.125 18.125H9.78125L13.5312 8.75H15L18.75 18.125ZM14.2625 10.275L12.625 14.375H15.9062L14.2625 10.275Z" fill="#083A5E" />
@@ -226,8 +226,8 @@ console.log("user",user.username)
                                             </ul>
                                         </div>
 
-                                    </div>
-                                    <div className="single_action__haeader rts-dark-light openuptip" id="rts-data-toggle">
+                                    </div> */}
+                                    {/* <div className="single_action__haeader rts-dark-light openuptip" id="rts-data-toggle">
                                         <div onClick={toggleModeTheme} style={{ cursor: 'pointer' }}>
                                             {themeType === 'light' ? (
                                                 <div className="in-light">
@@ -244,8 +244,10 @@ console.log("user",user.username)
                                             )}
                                         </div>
 
-                                    </div>
-                                    <div className="single_action__haeader user_avatar__information openuptip">
+                                    </div> */}
+
+                                    {/* Enable on signin */}
+                                    {/* <div className="single_action__haeader user_avatar__information openuptip">
                                         <div onClick={toggleProfile} className="avatar">
                                             <img src={avatar01} alt="avatar" />
                                         </div>
@@ -299,7 +301,7 @@ console.log("user",user.username)
                                                 </Link>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>
