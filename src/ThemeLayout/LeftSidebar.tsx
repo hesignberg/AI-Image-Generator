@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { BookOpenText, Gem, House, Images, LifeBuoy, LogIn } from 'lucide-react';
 
@@ -21,6 +21,10 @@ import { RootState } from "Slices/theme/store";
 
 const LeftSidebar = () => {
     const location = useLocation();
+    const navigate = useNavigate();
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    const profileImage = user.photo ? user.photo : avatar02;
     const themeSidebarToggle = useSelector((state: RootState) => state.theme.themeSidebarToggle);
     const [open, setOpen] = useState(false);
 
@@ -101,12 +105,32 @@ const LeftSidebar = () => {
                             </div>
                             <p>FAQs</p>
                         </Link>
-                        <Link to="/login" className="single-menu">
-                            <div className="icon">
-                                <LogIn color="#ffffff" />
+                        {
+                            (!token) ? (<Link to="/login" className="single-menu">
+                                <div className="icon">
+                                    <LogIn color="#ffffff" />
+                                </div>
+                                <p>Login</p>
+                            </Link>) : (
+                                <div className="bottom-user">
+                                <div className="user-wrapper">
+                                    <img src={profileImage} width={50} style={{ borderRadius: "100%" }}  alt="avatar" />
+                                    <div className="info">
+                                        <h6 className="title" style={{ fontSize: "16px" }}>{user.name}</h6>
+                                        <Link to="#" style={{ fontSize: "10px" }}>{user.email}</Link>
+                                    </div>
+                                    <span>Free</span>
+                                </div>
+                                <div className="pro-upgrade">
+                                    <button className="rts-btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
+                                        <img src={icons14} alt="icons" />
+                                        Upgrade To Pro
+                                    </button>
+                                </div>
                             </div>
-                            <p>Login</p>
-                        </Link>
+                            )
+                        }
+                        
                         {/* <Link
                             onClick={handleSettingsClick}
                             aria-expanded={open}
@@ -146,23 +170,11 @@ const LeftSidebar = () => {
                             <p>Logout</p>
                         </Link> */}
                     </div>
+                    
                 </div>
-                {/* <div className="bottom-user">
-                    <div className="user-wrapper">
-                        <img src={avatar02} alt="avatar" />
-                        <div className="info">
-                            <h6 className="title">Mack Gok</h6>
-                            <Link to="#">intellactai@net.com</Link>
-                        </div>
-                        <span>Free</span>
-                    </div>
-                    <div className="pro-upgrade">
-                        <button className="rts-btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
-                            <img src={icons14} alt="icons" />
-                            Upgrade To Pro
-                        </button>
-                    </div>
-                </div> */}
+
+                
+                
             </div>
         </>
     );

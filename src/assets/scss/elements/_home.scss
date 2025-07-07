@@ -51,10 +51,10 @@
             .bottom-user{
                 max-width: max-content;
                 padding: 4px;
-                margin-left: auto;
-                margin-right: 8px;
+                // margin-left: auto;
+                // margin-right: 8px;
                 height: 50px;
-                width: 50px;            
+                width: 100%;            
             }
             .pro-upgrade{
                 display: none;
@@ -65,14 +65,14 @@
             border: 1px solid #E5E4FF;
             padding: 20px 26px;
             border-radius: 6px;
-            margin-right: 30px;
+            // margin-right: 30px;
             @media #{$smlg-device} {
                 max-width: max-content;
                 padding: 4px;
-                margin-left: auto;
-                margin-right: 8px;
+                // margin-left: auto;
+                // margin-right: 8px;
                 height: 50px;
-                width: 50px;
+                width: 100%;
                 margin-top: 50px;
             }
             .user-wrapper{
