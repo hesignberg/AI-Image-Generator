@@ -102,7 +102,7 @@ const Register = () => {
                                                             className="form-check-label"
                                                             htmlFor="flexCheckDefault"
                                                         >
-                                                            I agree to privacy policy & terms
+                                                            I agree to <Link to="/terms">privacy policy & terms</Link>
                                                         </label>
                                                     </div>
                                                 </div>
