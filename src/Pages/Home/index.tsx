@@ -6,6 +6,9 @@ import banner from "assets/images/banner/01.png";
 import generator from "assets/images/generator/01.jpg";
 import generator2 from "assets/images/generator/02.jpg";
 import generator3 from "assets/images/generator/09.jpg";
+import generator4 from "assets/images/generator/10.jpg";
+import generator5 from "assets/images/generator/06.webp";
+import generator6 from "assets/images/generator/11.jpg";
 import useSidebarToggle from "Common/UseSideberToggleHooks";
 
 const Home = () => {
@@ -81,23 +84,23 @@ const Home = () => {
                             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div className="single-image-generator">
                                     <Link to="/" className="thumbnail">
-                                        <img src={generator3} alt="images" />
+                                        <img src={generator5} alt="images" />
                                     </Link>
                                     <div className="inner-content">
                                         <div className="left-content-area">
-                                            <h5 className="title">Image-to-Image</h5>
-                                            <p className="disc">
+                                            <h5 className="title">Reimagine</h5>
+                                            {/* <p className="disc">
                                                 Upload a base image and transform it with a new style, prompt, or vibe.
-                                            </p>
+                                            </p> */}
                                         </div>
                                         {/* <Link to="/" className="rts-btn btn-primary">Generate</Link> */}
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                            {/* <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div className="single-image-generator">
                                     <Link to="/" className="thumbnail">
-                                        <img src={generator3} alt="images" />
+                                        <img src={generator4} alt="images" />
                                     </Link>
                                     <div className="inner-content">
                                         <div className="left-content-area">
@@ -106,10 +109,10 @@ const Home = () => {
                                                 Upload any image and let the AI describe it in detailed, intelligent text.
                                             </p>
                                         </div>
-                                        {/* <Link to="/" className="rts-btn btn-primary">Generate</Link> */}
+                                        <Link to="/" className="rts-btn btn-primary">Generate</Link>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -130,14 +133,14 @@ const Home = () => {
                                                 Turn your text prompts into high-quality 3D scenes.
                                             </p>
                                         </div>
-                                        {/* <Link to="/image-generator" className="rts-btn btn-primary">Generate</Link> */}
+                                        <Link to="/image-generator" className="rts-btn btn-primary">Generate</Link>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div className="single-image-generator">
                                     <Link to="/" className="thumbnail">
-                                        <img src={generator2} alt="images" />
+                                        <video src="./vid_gen.mp4" loop autoPlay muted > </video>
                                     </Link>
                                     <div className="inner-content">
                                         <div className="left-content-area">
@@ -146,14 +149,14 @@ const Home = () => {
                                                 Unleash the power of AI to create stunning videos from text prompts.
                                             </p>
                                         </div>
-                                        {/* <Link to="/" className="rts-btn btn-primary">Generate</Link> */}
+                                        <Link to="/" className="rts-btn btn-primary">Generate</Link>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div className="single-image-generator">
                                     <Link to="/" className="thumbnail">
-                                        <img src={generator3} alt="images" />
+                                        <img src={generator6} alt="images" />
                                     </Link>
                                     <div className="inner-content">
                                         <div className="left-content-area">
@@ -162,7 +165,7 @@ const Home = () => {
                                                 Generate high-quality 3D models from text prompts, ready for use in games and simulations.
                                             </p>
                                         </div>
-                                        {/* <Link to="/" className="rts-btn btn-primary">Generate</Link> */}
+                                        <Link to="/" className="rts-btn btn-primary">Generate</Link>
                                     </div>
                                 </div>
                             </div>
