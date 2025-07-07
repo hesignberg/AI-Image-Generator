@@ -1,3 +1,7 @@
+.price-check-point{
+    text-align: left;
+    margin-left: 2px;
+}
 .pricing-button-one{
     display: flex;
     align-items: center;
@@ -143,7 +147,7 @@
             margin-bottom: 30px;
         }
         .check-wrapper{
-            text-align: center;
+            // text-align: center;
             margin-bottom: 45px;
             padding-left: 32px;
             .check-area{
@@ -156,7 +160,8 @@
                 }
                 p{
                     color: #083A5E;
-                    margin: 0;
+                    margin: 2px;
+                    margin-left: 5px;
                     font-weight: 500;
                     font-size: 14px;
                     line-height: 24px;

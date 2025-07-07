@@ -1,27 +1,40 @@
 import React from "react";
+import Masonry from 'react-masonry-css'
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 //import images
 import avatar01 from "assets/images/community/avatar-01.png";
-import community01 from "assets/images/community/01.jpg";
-import community02 from "assets/images/community/02.jpg";
-import community03 from "assets/images/community/03.jpg";
-import community04 from "assets/images/community/04.jpg";
-import community05 from "assets/images/community/05.jpg";
-import community06 from "assets/images/community/06.jpg";
-import community07 from "assets/images/community/07.jpg";
-import community08 from "assets/images/community/08.jpg";
-import community09 from "assets/images/community/09.jpg";
-import community10 from "assets/images/community/10.jpg";
+
+const community01 = "https://ideogram.ai/assets/progressive-image/balanced/response/tZFJELfhSjKqFcZkrN4VZA";
+const community02 = "https://ideogram.ai/assets/progressive-image/balanced/response/_13SJH_3SOeOGVfoNDi_Ew";
+const community03 = "https://ideogram.ai/assets/progressive-image/balanced/response/PBbYvjnbRn2RtZdas17Ivw";
+const community04 = "https://ideogram.ai/assets/progressive-image/balanced/response/SFFHexIDS7qVJRNr5gqkjQ"
+const community05 = "https://ideogram.ai/assets/progressive-image/balanced/response/WmKwRBd6TPy908mRcD0tqQ"
+const community06 = "https://ideogram.ai/assets/progressive-image/balanced/response/1hn5PbE2Q1-2kVarIDI_gw"
+const community07 = "https://ideogram.ai/assets/progressive-image/balanced/response/v3jJH3R_RJ2y0WJO-ourng"
+const community08 = "https://ideogram.ai/assets/progressive-image/balanced/response/2T1-fRQ5T0yN82b7UtP3Gw"
+const community09 = "https://ideogram.ai/assets/progressive-image/balanced/response/DssXK59cSwKG-vwTVNpnCw"
+const community10 = "https://ideogram.ai/assets/progressive-image/balanced/response/CRQ0xwB7RnqbxPYsX6lXSQ"
 
 const ImageTabs = () => {
+    const breakpointColumns = {
+        default: 4,
+        1100: 3,
+        700: 2,
+        500: 1
+    };
+
     return (
         <>
+        
             <Row className="g-5">
-                <Col lg={4} md={4} sm={6} xs={12} className="col-show-5">
-
-                    <div className="single-cummunity-feed">
+                <Masonry
+                breakpointCols={breakpointColumns}
+                className="masonry-grid"
+                columnClassName="masonry-grid_column"
+            >   
+            <div className="single-cummunity-feed">
                         <Link to="/community-details" className="thumbnail">
                             <img src={community01} alt="community" />
                         </Link>
@@ -47,9 +60,6 @@ const ImageTabs = () => {
                             </p>
                         </div>
                     </div>
-
-                </Col>
-                <Col lg={4} md={4} sm={6} xs={12} className="col-show-5">
 
                     <div className="single-cummunity-feed">
                         <Link to="/community-details" className="thumbnail">
@@ -77,10 +87,6 @@ const ImageTabs = () => {
                             </p>
                         </div>
                     </div>
-
-                </Col>
-                <Col lg={4} md={4} sm={6} xs={12} className="col-show-5">
-
                     <div className="single-cummunity-feed">
                         <Link to="/community-details" className="thumbnail">
                             <img src={community03} alt="community" />
@@ -107,10 +113,6 @@ const ImageTabs = () => {
                             </p>
                         </div>
                     </div>
-
-                </Col>
-                <Col lg={4} md={4} sm={6} xs={12} className="col-show-5">
-
                     <div className="single-cummunity-feed">
                         <Link to="/community-details" className="thumbnail">
                             <img src={community04} alt="community" />
@@ -137,10 +139,6 @@ const ImageTabs = () => {
                             </p>
                         </div>
                     </div>
-
-                </Col>
-                <Col lg={4} md={4} sm={6} xs={12} className="col-show-5">
-
                     <div className="single-cummunity-feed">
                         <Link to="/community-details" className="thumbnail">
                             <img src={community05} alt="community" />
@@ -167,10 +165,6 @@ const ImageTabs = () => {
                             </p>
                         </div>
                     </div>
-
-                </Col>
-                <Col lg={4} md={4} sm={6} xs={12} className="col-show-5">
-
                     <div className="single-cummunity-feed">
                         <Link to="/community-details" className="thumbnail">
                             <img src={community06} alt="community" />
@@ -197,10 +191,6 @@ const ImageTabs = () => {
                             </p>
                         </div>
                     </div>
-
-                </Col>
-                <Col lg={4} md={4} sm={6} xs={12} className="col-show-5">
-
                     <div className="single-cummunity-feed">
                         <Link to="/community-details" className="thumbnail">
                             <img src={community07} alt="community" />
@@ -227,10 +217,6 @@ const ImageTabs = () => {
                             </p>
                         </div>
                     </div>
-
-                </Col>
-                <Col lg={4} md={4} sm={6} xs={12} className="col-show-5">
-
                     <div className="single-cummunity-feed">
                         <Link to="/community-details" className="thumbnail">
                             <img src={community08} alt="community" />
@@ -257,10 +243,6 @@ const ImageTabs = () => {
                             </p>
                         </div>
                     </div>
-
-                </Col>
-                <Col lg={4} md={4} sm={6} xs={12} className="col-show-5">
-
                     <div className="single-cummunity-feed">
                         <Link to="/community-details" className="thumbnail">
                             <img src={community09} alt="community" />
@@ -287,10 +269,6 @@ const ImageTabs = () => {
                             </p>
                         </div>
                     </div>
-
-                </Col>
-                <Col lg={4} md={4} sm={6} xs={12} className="col-show-5">
-
                     <div className="single-cummunity-feed">
                         <Link to="/community-details" className="thumbnail">
                             <img src={community10} alt="community" />
@@ -317,8 +295,57 @@ const ImageTabs = () => {
                             </p>
                         </div>
                     </div>
+            </Masonry>
+                {/* <Col lg={4} md={4} sm={6} xs={12} className="col-show-5">
+
+                    
 
                 </Col>
+                <Col lg={4} md={4} sm={6} xs={12} className="col-show-5">
+
+                    
+
+                </Col>
+                <Col lg={4} md={4} sm={6} xs={12} className="col-show-5">
+
+                    
+
+                </Col>
+                <Col lg={4} md={4} sm={6} xs={12} className="col-show-5">
+
+                    
+
+                </Col>
+                <Col lg={4} md={4} sm={6} xs={12} className="col-show-5">
+
+                    
+
+                </Col>
+                <Col lg={4} md={4} sm={6} xs={12} className="col-show-5">
+
+                    
+
+                </Col>
+                <Col lg={4} md={4} sm={6} xs={12} className="col-show-5">
+
+                    
+
+                </Col>
+                <Col lg={4} md={4} sm={6} xs={12} className="col-show-5">
+
+                    
+
+                </Col>
+                <Col lg={4} md={4} sm={6} xs={12} className="col-show-5">
+
+                    
+
+                </Col>
+                <Col lg={4} md={4} sm={6} xs={12} className="col-show-5">
+
+                    
+
+                </Col> */}
                 <Col lg={12} className="mt--50 justify-content-end d-flex">
                     <Link to="/manage-subscription" className="rts-btn btn-primary loadmore-btn">
                         Load More Feed

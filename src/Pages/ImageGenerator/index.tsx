@@ -45,7 +45,7 @@ const ImageGenerator = () => {
         <>
             <div className={`main-center-content-m-left center-content search-sticky ${themeSidebarToggle ? "collapsed" : ""}`}>
 
-                <div className="question_answer__wrapper__chatbot">
+                {/* <div className="question_answer__wrapper__chatbot">
                     <div className="single__question__answer">
                         <div className="question_user">
                             <div className="left_user_info">
@@ -299,11 +299,11 @@ const ImageGenerator = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
 
                 <form action="#" className="search-form">
-                    <input type="text" placeholder="Message openup..." />
+                    <input type="text" placeholder="Describe what you want to generate..." />
                     <button><i className="fa-regular fa-arrow-up"></i></button>
                 </form>
                 <div className="copyright-area-bottom">

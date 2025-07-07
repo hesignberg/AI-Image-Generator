@@ -106,11 +106,11 @@ const LeftSidebar = () => {
                             <p>FAQs</p>
                         </Link>
                         {
-                            (!token) ? (<Link to="/login" className="single-menu">
+                            (!token) ? (<Link to="/register" className="single-menu">
                                 <div className="icon">
                                     <LogIn color="#ffffff" />
                                 </div>
-                                <p>Login</p>
+                                <p>Register</p>
                             </Link>) : (
                                 <div className="bottom-user">
                                 <div className="user-wrapper">

@@ -111,6 +111,10 @@ const Login = () => {
                                                 <button type="submit" className="rts-btn btn-primary">
                                                     Sign In
                                                 </button>
+                                                <div className="google-login">
+                                        <button onClick={handleGoogleLogin} className="login-with-google-btn">
+                                            Sign in with Google
+                                        </button> </div>
                                                 <p>
                                                     Don't have an account?{" "}
                                                     <Link className="ml--5" to="/register">
@@ -123,10 +127,7 @@ const Login = () => {
                                             )}
                                         </div>
                                     </div>
-                                    <div className="google-login">
-                                        <button onClick={handleGoogleLogin} className="rts-btn btn-google">
-                                            Sign in with Google
-                                        </button> </div>
+                                    
                                 </Col>
                             </Row>
                         </Container>

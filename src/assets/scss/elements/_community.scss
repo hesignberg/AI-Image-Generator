@@ -1,5 +1,27 @@
 // single community feed style
+.masonry-grid {
+    display: flex;
+    width: auto;
+    margin-left: -16px; /* Adjust gap between items */
+}
+
+.masonry-grid_column {
+    padding-left: 16px; /* Adjust gap between items */
+    background-clip: padding-box;
+}
+
+.single-community-feed {
+    margin-bottom: 16px; /* Adjust vertical gap between items */
+}
+
+.thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
 .single-cummunity-feed{
+    margin-bottom: 16px;
     position: relative;
     display: block;
     overflow: hidden;

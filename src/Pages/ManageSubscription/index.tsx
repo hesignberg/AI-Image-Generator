@@ -77,31 +77,35 @@ const ManageSubscription = () => {
                                                         </div>
                                                     </div>
                                                     <div className="body">
-                                                        <p className="para">A premium pricing plan is a pricing <br /> structure that is designed.</p>
+                                                        <p className="para">Ideal for hobbyists, casual creators, and experimental users.</p>
 
                                                         <div className="check-wrapper">
 
                                                             <div className="check-area">
                                                                 <i className="fa-solid fa-check"></i>
-                                                                <p>10,000 Monthly Word Limit</p>
+                                                                <p className="price-check-point">Access to AI Image Generator</p>
                                                             </div>
 
 
                                                             <div className="check-area">
                                                                 <i className="fa-solid fa-check"></i>
-                                                                <p>10+ Templates</p>
+                                                                <p className="price-check-point">Describe Image tool</p>
                                                             </div>
 
 
                                                             <div className="check-area">
                                                                 <i className="fa-solid fa-check"></i>
-                                                                <p>All types of content</p>
+                                                                <p className="price-check-point">5 daily generations</p>
                                                             </div>
 
 
                                                             <div className="check-area">
                                                                 <i className="fa-solid fa-check"></i>
-                                                                <p>10+ Languages</p>
+                                                                <p className="price-check-point">512x512 resolution output</p>
+                                                            </div>
+                                                            <div className="check-area">
+                                                                <i className="fa-solid fa-check"></i>
+                                                                <p className="price-check-point">Standard model support</p>
                                                             </div>
 
                                                         </div>
@@ -121,31 +125,47 @@ const ManageSubscription = () => {
                                                         </div>
                                                     </div>
                                                     <div className="body">
-                                                        <p className="para">A premium pricing plan is a pricing <br /> structure that is designed.</p>
+                                                        <p className="para">Best for content creators, designers, and professionals.</p>
 
                                                         <div className="check-wrapper">
 
                                                             <div className="check-area">
                                                                 <i className="fa-solid fa-check"></i>
-                                                                <p>60,000 Monthly Word Limit</p>
+                                                                <p className="price-check-point">Unlimited daily generations</p>
                                                             </div>
 
 
                                                             <div className="check-area">
                                                                 <i className="fa-solid fa-check"></i>
-                                                                <p>60+ Templates</p>
+                                                                <p className="price-check-point">Inpainting tool</p>
                                                             </div>
 
 
                                                             <div className="check-area">
                                                                 <i className="fa-solid fa-check"></i>
-                                                                <p>All types of content</p>
+                                                                <p className="price-check-point">Image-to-Image</p>
                                                             </div>
 
 
                                                             <div className="check-area">
                                                                 <i className="fa-solid fa-check"></i>
-                                                                <p>60+ Languages</p>
+                                                                <p className="price-check-point">Upscaling up to 4K</p>
+                                                            </div>
+                                                            <div className="check-area">
+                                                                <i className="fa-solid fa-check"></i>
+                                                                <p className="price-check-point">NSFW toggle access</p>
+                                                            </div>
+                                                            <div className="check-area">
+                                                                <i className="fa-solid fa-check"></i>
+                                                                <p className="price-check-point">Save & view prompt history</p>
+                                                            </div>
+                                                            <div className="check-area">
+                                                                <i className="fa-solid fa-check"></i>
+                                                                <p className="price-check-point">Commercial usage license</p>
+                                                            </div>
+                                                            <div className="check-area">
+                                                                <i className="fa-solid fa-check"></i>
+                                                                <p className="price-check-point">30 priority renders/day</p>
                                                             </div>
 
                                                         </div>
@@ -165,31 +185,39 @@ const ManageSubscription = () => {
                                                         </div>
                                                     </div>
                                                     <div className="body">
-                                                        <p className="para">A premium pricing plan is a pricing <br /> structure that is designed.</p>
+                                                        <p className="para">Designed for power users, businesses, and advanced workflows.</p>
 
                                                         <div className="check-wrapper">
 
                                                             <div className="check-area">
                                                                 <i className="fa-solid fa-check"></i>
-                                                                <p>30,000 Monthly Word Limit</p>
+                                                                <p className="price-check-point">Full API access</p>
                                                             </div>
 
 
                                                             <div className="check-area">
                                                                 <i className="fa-solid fa-check"></i>
-                                                                <p>30+ Templates</p>
+                                                                <p className="price-check-point">Team sharing (up to 5 accounts)</p>
                                                             </div>
 
 
                                                             <div className="check-area">
                                                                 <i className="fa-solid fa-check"></i>
-                                                                <p>All types of content</p>
+                                                                <p className="price-check-point">Private generation queue</p>
                                                             </div>
 
 
                                                             <div className="check-area">
                                                                 <i className="fa-solid fa-check"></i>
-                                                                <p>40+ Languages</p>
+                                                                <p className="price-check-point">Dedicated GPU slot</p>
+                                                            </div>
+                                                            <div className="check-area">
+                                                                <i className="fa-solid fa-check"></i>
+                                                                <p className="price-check-point">Early access to experimental models & beta features</p>
+                                                            </div>
+                                                            <div className="check-area">
+                                                                <i className="fa-solid fa-check"></i>
+                                                                <p className="price-check-point">Priority support</p>
                                                             </div>
 
                                                         </div>

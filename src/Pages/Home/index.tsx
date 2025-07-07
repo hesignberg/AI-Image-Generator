@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 //import images
-import banner from "assets/images/banner/01.png";
+import banner from "assets/images/banner/banner_img_3.png";
 import generator from "assets/images/generator/01.jpg";
 import generator2 from "assets/images/generator/02.jpg";
 import generator3 from "assets/images/generator/09.jpg";
@@ -22,9 +22,9 @@ const Home = () => {
                         <p className="dsic">
                             Create stunning AI-generated images with full creative freedom. No censorship. Just pure generative power.
                         </p>
-                        <Link to="#" className="rts-btn btn-blur">Get Started</Link>
+                        <Link to="/image-generator" className="rts-btn btn-blur">Get Started</Link>
                         <div className="inner-right-iamge">
-                            <img src={banner} alt="banner" />
+                            <img src={banner} width={370} style={{"transform": "scaleX(-1)"}} alt="banner" />
                         </div>
                     </div>
                 </div>

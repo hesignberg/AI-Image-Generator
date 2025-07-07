@@ -40,7 +40,7 @@ const Chatbot = () => {
     return (
         <>
             <div className={`main-center-content-m-left center-content search-sticky ${themeSidebarToggle ? "collapsed" : ""}`}>
-                <div className="question_answer__wrapper__chatbot">
+                {/* <div className="question_answer__wrapper__chatbot">
                     <div className="single__question__answer">
                         <div className="question_user">
                             <div className="left_user_info">
@@ -141,7 +141,7 @@ const Chatbot = () => {
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <form action="#" className="search-form">
                     <input type="text" placeholder="Message openup..." />
                     <button><i className="fa-regular fa-arrow-up"></i></button>
