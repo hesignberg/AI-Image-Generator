@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 
 //import images
-import avatar03 from "assets/images/avatar/03.png";
-import avatar04 from "assets/images/avatar/04.png";
+// import avatar03 from "assets/images/avatar/03.png";
+// import avatar04 from "assets/images/avatar/04.png";
 import { Link } from "react-router-dom";
 import RightSidebar from "./RightSidebar";
 import useSidebarToggle from "Common/UseSideberToggleHooks";

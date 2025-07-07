@@ -4,18 +4,18 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BookOpenText, Gem, House, Images, LifeBuoy, LogIn } from 'lucide-react';
 
 //import images
-import icons01 from "assets/images/icons/01.png";
-import icons02 from "assets/images/icons/02.png";
-import icons03 from "assets/images/icons/03.png";
-import icons04 from "assets/images/icons/04.png";
-import icons05 from "assets/images/icons/05.png";
-import icons06 from "assets/images/icons/06.png";
-import icons07 from "assets/images/icons/07.png";
-import icons08 from "assets/images/icons/08.png";
-import icons09 from "assets/images/icons/09.png";
+// import icons01 from "assets/images/icons/01.png";
+// import icons02 from "assets/images/icons/02.png";
+// import icons03 from "assets/images/icons/03.png";
+// import icons04 from "assets/images/icons/04.png";
+// import icons05 from "assets/images/icons/05.png";
+// import icons06 from "assets/images/icons/06.png";
+// import icons07 from "assets/images/icons/07.png";
+// import icons08 from "assets/images/icons/08.png";
+// import icons09 from "assets/images/icons/09.png";
 import icons14 from "assets/images/icons/14.png";
 import avatar02 from "assets/images/avatar/02.png";
-import { Collapse } from "react-bootstrap";
+// import { Collapse } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { RootState } from "Slices/theme/store";
 
@@ -32,11 +32,11 @@ const LeftSidebar = () => {
         setOpen(!open);
     };
 
-    const handleFaqClick = () => {
-        if (open) {
-            setOpen(false);
-        }
-    };
+    // const handleFaqClick = () => {
+    //     if (open) {
+    //         setOpen(false);
+    //     }
+    // };
     return (
         <>
             <div className={`left-side-bar ${themeSidebarToggle ? "collapsed" : ""}`}>

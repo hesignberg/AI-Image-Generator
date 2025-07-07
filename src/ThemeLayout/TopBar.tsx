@@ -16,10 +16,10 @@ import { LogIn } from "lucide-react";
 //images
 import logo01 from "assets/images/logo/logo-01.png";
 import icons01 from "assets/images/icons/01.svg";
-import icons02 from "assets/images/icons/02.svg";
+// import icons02 from "assets/images/icons/02.svg";
 import user1 from "assets/images/avatar/user.svg";
 import avatar01 from "assets/images/avatar/01.png";
-import user2 from "assets/images/avatar/user-2.svg";
+// import user2 from "assets/images/avatar/user-2.svg";
 
 const TopBar = () => {
     const navigate = useNavigate();

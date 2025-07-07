@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container, Modal, Nav, Row, Tab, TabContent, TabPane, Tabs } from "react-bootstrap";
+import { Container, Modal, Nav, Row, Tab, TabContent, TabPane } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 interface ManageSubscriptionProps {
