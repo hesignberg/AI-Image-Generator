@@ -6,6 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { THEME_MODE, THEME_SIDEBAR_TOGGLE, changeTheme, changeSidebarThemeToggle } from "Slices/theme/reducer";
 import { RootState } from "Slices/theme/store";
 
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase/firebase";
+
+import { useNavigate } from "react-router-dom";
+
+import { LogIn } from "lucide-react";
+
 //images
 import logo01 from "assets/images/logo/logo-01.png";
 import icons01 from "assets/images/icons/01.svg";
@@ -15,9 +22,29 @@ import avatar01 from "assets/images/avatar/01.png";
 import user2 from "assets/images/avatar/user-2.svg";
 
 const TopBar = () => {
-    const [isUpdateSubscription, setIsUpdateSubscription] = useState<boolean>(false);
+    const navigate = useNavigate();
+    const token = localStorage.getItem("token");
     const user = JSON.parse(localStorage.getItem("user") || "{}");
-console.log("user",user.username)
+    const profileImage = user.photo ? user.photo : avatar01;
+
+    const handleLogout = async () => {
+        try {
+          await signOut(auth); // Firebase logout
+          localStorage.removeItem("token");
+          localStorage.removeItem("user");
+    
+          navigate("/");
+        } catch (error) {
+          console.error("Logout Error:", error);
+        }
+      };
+    
+    
+
+
+    const [isUpdateSubscription, setIsUpdateSubscription] = useState<boolean>(false);
+    // const user = JSON.parse(localStorage.getItem("user") || "{}");
+// console.log("user",user.username)
 
     const toggleUpdateSubscription = () => {
         setIsUpdateSubscription(!isUpdateSubscription);
@@ -245,19 +272,26 @@ console.log("user",user.username)
                                         </div>
 
                                     </div> */}
-
-                                    {/* Enable on signin */}
-                                    {/* <div className="single_action__haeader user_avatar__information openuptip">
+                                    {(!token)? (<div className="button-area">
+                                    <Link
+                                        
+                                        to="/login"
+                                        className="rts-btn btn-primary"
+                                    >
+                                        <LogIn color="#ffffff" />
+                                        Login
+                                    </Link>
+                                </div>):(<div className="single_action__haeader user_avatar__information openuptip">
                                         <div onClick={toggleProfile} className="avatar">
-                                            <img src={avatar01} alt="avatar" />
+                                            <img src={ profileImage } alt="avatar" style={{ borderRadius: "100%" }}  />
                                         </div>
                                         <div style={{ display: isProfile ? "block" : "none" }} className="user_information_main_wrapper slide-down__click">
                                             <div className="user_header">
                                                 <div className="main-avatar">
-                                                    <img src={user2} alt="user" />
+                                                    <img src={profileImage} alt="user" />
                                                 </div>
                                                 <div className="user_naim-information">
-                                                    <h3 className="title">{user.username}</h3>
+                                                    <h3 className="title">{user.name}</h3>
                                                     <span className="desig">{user.email}</span>
                                                 </div>
                                             </div>
@@ -296,12 +330,15 @@ console.log("user",user.username)
                                                 </ul>
                                             </div>
                                             <div className="popup-footer-btn">
-                                                <Link to="#" className="geex-content__header__popup__footer__link">Logout
+                                                <button onClick={handleLogout} className="geex-content__header__popup__footer__link">Logout
                                                     <i className="fa-light fa-arrow-right"></i>
-                                                </Link>
+                                                </button>
                                             </div>
                                         </div>
-                                    </div> */}
+                                    </div>)}
+                                    
+                                    {/* Enable on signin */}
+                                    
                                 </div>
                             </div>
                         </div>

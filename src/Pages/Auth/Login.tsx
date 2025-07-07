@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+// import { GoogleLogin } from '@react-oauth/google';
+// import { jwtDecode } from "jwt-decode";
+
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../../firebase/firebase";
+
 
 
 const Login = () => {
@@ -10,6 +16,24 @@ const Login = () => {
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
+    const handleGoogleLogin = async () => {
+        try {
+          const result = await signInWithPopup(auth, provider);
+          const user = result.user;
+          const token = await user.getIdToken(); // Firebase ID token
+    
+          // Save token and user
+          localStorage.setItem("token", token);
+          localStorage.setItem("user", JSON.stringify({ email: user.email, name: user.displayName, photo: user.photoURL}));
+    
+          console.log("Logged in with Firebase:", user);
+          navigate("/");
+    
+        } catch (error) {
+          console.error("Google Login Error", error);
+        }
+      };
+    
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -99,6 +123,10 @@ const Login = () => {
                                             )}
                                         </div>
                                     </div>
+                                    <div className="google-login">
+                                        <button onClick={handleGoogleLogin} className="rts-btn btn-google">
+                                            Sign in with Google
+                                        </button> </div>
                                 </Col>
                             </Row>
                         </Container>
