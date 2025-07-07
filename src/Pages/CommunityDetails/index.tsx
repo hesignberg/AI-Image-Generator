@@ -1,6 +1,5 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { color } from "react-native-tailwindcss";
 
 const CommunityDetails = () => {
   const darkThemeStyles = {
