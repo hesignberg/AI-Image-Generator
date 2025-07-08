@@ -11,20 +11,28 @@ const Faq = () => {
 
     const accordionData = [
         {
-            title: 'What is openup content writing tool?',
-            content: 'Once you know your audience, choose a topic that will resonate with them. Look for trending topics in your industry or address common questions or challenges your audience may be facing.'
+            title: 'What is this platform used for?',
+            content: 'It’s an AI-powered image generator that allows users to create, edit, upscale, and describe images using prompts. You can generate original content, transform existing images, and explore your creativity without censorship.'
         },
         {
-            title: 'What languages does it support?',
-            content: 'Once you know your audience, choose a topic that will resonate with them. Look for trending topics in your industry or address common questions or challenges your audience may be facing.'
+            title: 'Can I try it for free?',
+            content: 'We do not offer a free plan or trial. To ensure uncensored access and avoid ads, everything is behind a one-time paid plan.'
         },
         {
-            title: 'What is SEO writing AI and how do I use it?',
-            content: 'Once you know your audience, choose a topic that will resonate with them. Look for trending topics in your industry or address common questions or challenges your audience may be facing.'
+            title: 'Why is there no free version?',
+            content: 'Free models often come with restrictions or surveillance. We built this platform to give full creative freedom — with no censorship or tracking — and that means supporting a sustainable paid model.'
         },
         {
-            title: 'Does Openup write long articles?',
-            content: 'Once you know your audience, choose a topic that will resonate with them. Look for trending topics in your industry or address common questions or challenges your audience may be facing.'
+            title: 'Is NSFW content allowed?',
+            content: 'Yes, as long as it abides by legal and ethical boundaries. We strictly prohibit any content involving minors, abuse, or non-consensual imagery.'
+        },
+        {
+            title: 'Can I generate images of real people?',
+            content: 'No. Deepfakes or likenesses of identifiable individuals — celebrities, public figures, or private individuals — are not allowed and may lead to account suspension.'
+        },
+        {
+            title: 'What happens if I break the rules?',
+            content: 'Your account may be permanently suspended without refund, and in severe cases, we may cooperate with law enforcement.'
         },
     ];
     return (
@@ -37,7 +45,7 @@ const Faq = () => {
                             <Col lg={12}>
                                 <div className="title-conter-area dashboard">
                                     <h2 className="title">
-                                        Questions About our OpenUp? <br />
+                                        Questions About Lucid Layers? <br />
                                         We have Answers!
                                     </h2>
                                     <p className="disc">

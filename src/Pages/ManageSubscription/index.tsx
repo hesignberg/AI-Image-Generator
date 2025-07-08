@@ -12,25 +12,21 @@ const ManageSubscription = () => {
 
     const accordionData = [
         {
-            title: 'What is openup content writing tool?',
-            content: 'Once you know your audience, choose a topic that will resonate with them. Look for trending topics in your industry or address common questions or challenges your audience may be facing.'
+            title: 'What is this platform used for?',
+            content: 'It’s an AI-powered image generator that allows users to create, edit, upscale, and describe images using prompts. You can generate original content, transform existing images, and explore your creativity without censorship.'
         },
         {
-            title: 'What languages does it supports?',
-            content: 'Once you know your audience, choose a topic that will resonate with them. Look for trending topics in your industry or address common questions or challenges your audience may be facing.'
+            title: 'Is the platform free to use?',
+            content: 'To use the AI Image Generator you need to create an account and buy the subscribtion. We work on lifetime subscribtion model.'
         },
         {
-            title: 'What is SEO writing AI and how do I use it?',
-            content: 'Once you know your audience, choose a topic that will resonate with them. Look for trending topics in your industry or address common questions or challenges your audience may be facing.'
+            title: 'What payment methods do you support?',
+            content: 'We support major payment gateways including credit/debit cards, Crypto, and PayPal.'
         },
         {
-            title: 'What languages does it supports?',
-            content: 'Once you know your audience, choose a topic that will resonate with them. Look for trending topics in your industry or address common questions or challenges your audience may be facing.'
-        },
-        {
-            title: 'Does Openup To write long articles?',
-            content: 'Once you know your audience, choose a topic that will resonate with them. Look for trending topics in your industry or address common questions or challenges your audience may be facing.'
-        },
+            title: 'How can I report abuse or inappropriate content?',
+            content: 'Use the “Report” button next to any user-generated image or contact us directly at support@lucidlayers.com.'
+        }
     ];
 
     return (
