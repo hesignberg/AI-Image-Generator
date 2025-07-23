@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { signInWithPopup } from "firebase/auth";
-import { auth, provider } from "../../firebase/firebase";
+// import { signInWithPopup } from "firebase/auth";
+// import { auth, provider } from "../../firebase/firebase";
 
 const Register = () => {
     const [name, setName] = useState("");
@@ -12,23 +12,23 @@ const Register = () => {
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
-    const handleGoogleLogin = async () => {
-            try {
-              const result = await signInWithPopup(auth, provider);
-              const user = result.user;
-              const token = await user.getIdToken(); // Firebase ID token
+    // const handleGoogleLogin = async () => {
+    //         try {
+    //           const result = await signInWithPopup(auth, provider);
+    //           const user = result.user;
+    //           const token = await user.getIdToken(); // Firebase ID token
         
-              // Save token and user
-              localStorage.setItem("token", token);
-              localStorage.setItem("user", JSON.stringify({ email: user.email, name: user.displayName, photo: user.photoURL}));
+    //           // Save token and user
+    //           localStorage.setItem("token", token);
+    //           localStorage.setItem("user", JSON.stringify({ email: user.email, name: user.displayName, photo: user.photoURL}));
         
-              console.log("Logged in with Firebase:", user);
-              navigate("/");
+    //           console.log("Logged in with Firebase:", user);
+    //           navigate("/");
         
-            } catch (error) {
-              console.error("Google Login Error", error);
-            }
-          };
+    //         } catch (error) {
+    //           console.error("Google Login Error", error);
+    //         }
+    //       };
 
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -130,7 +130,7 @@ const Register = () => {
                                                     Create Account
                                                 </button>
                                                 <div className="google-login">
-                                        <button onClick={handleGoogleLogin} className="login-with-google-btn">
+                                        <button className="login-with-google-btn">
                                             Sign in with Google
                                         </button> </div>
                                                 <p>

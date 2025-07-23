@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { THEME_MODE, THEME_SIDEBAR_TOGGLE, changeTheme, changeSidebarThemeToggle } from "Slices/theme/reducer";
 import { RootState } from "Slices/theme/store";
 
-import { signOut } from "firebase/auth";
-import { auth } from "../firebase/firebase";
+// import { signOut } from "firebase/auth";
+// import { auth } from "../firebase/firebase";
 
 import { useNavigate } from "react-router-dom";
 
@@ -27,17 +27,17 @@ const TopBar = () => {
     const user = JSON.parse(localStorage.getItem("user") || "{}");
     const profileImage = user.photo ? user.photo : avatar01;
 
-    const handleLogout = async () => {
-        try {
-          await signOut(auth); // Firebase logout
-          localStorage.removeItem("token");
-          localStorage.removeItem("user");
+    // const handleLogout = async () => {
+    //     try {
+    //       await signOut(auth); // Firebase logout
+    //       localStorage.removeItem("token");
+    //       localStorage.removeItem("user");
     
-          navigate("/");
-        } catch (error) {
-          console.error("Logout Error:", error);
-        }
-      };
+    //       navigate("/");
+    //     } catch (error) {
+    //       console.error("Logout Error:", error);
+    //     }
+    //   };
     
     
 
@@ -330,7 +330,7 @@ const TopBar = () => {
                                                 </ul>
                                             </div>
                                             <div className="popup-footer-btn">
-                                                <button onClick={handleLogout} className="geex-content__header__popup__footer__link">Logout
+                                                <button className="geex-content__header__popup__footer__link">Logout
                                                     <i className="fa-light fa-arrow-right"></i>
                                                 </button>
                                             </div>
