@@ -40,7 +40,7 @@ const Login = () => {
         setError("");
 
         try {
-            const res = await fetch("http://localhost:5000/api/auth/login", {
+            const res = await fetch("/api/auth/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -49,7 +49,6 @@ const Login = () => {
             });
 
             const data = await res.json();
-
             if (!res.ok) {
                 setError(data.message || "Login failed");
                 return;
@@ -58,7 +57,6 @@ const Login = () => {
             // Save token to localStorage or context
             localStorage.setItem("token", data.token);
             localStorage.setItem("user", JSON.stringify(data.user));
-            console.log("Login successful:", data);
             navigate("/"); 
             // Redirect or show success
             // navigate("/dashboard"); // if using react-router

@@ -14,7 +14,7 @@ import { BookOpenText, Gem, House, Images, LifeBuoy, LogIn } from 'lucide-react'
 // import icons08 from "assets/images/icons/08.png";
 // import icons09 from "assets/images/icons/09.png";
 import icons14 from "assets/images/icons/14.png";
-import avatar02 from "assets/images/avatar/02.png";
+import avatar02 from "assets/images/avatar/male.jpeg";
 // import { Collapse } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { RootState } from "Slices/theme/store";
@@ -40,7 +40,7 @@ const LeftSidebar = () => {
     return (
         <>
             <div className={`left-side-bar ${themeSidebarToggle ? "collapsed" : ""}`}>
-                <div className="overlay-mobile-area"></div>
+                <div className="overlay-mobile-area bg-[#090E18]"></div>
                 <div className="inner">
                     <div className="single-menu-wrapper">
                         <Link to="/" className={`single-menu openuptip ${location.pathname === "/" ? "active" : ""
@@ -98,7 +98,7 @@ const LeftSidebar = () => {
                             <p>Voice Generate</p>
                         </Link>
                     </div> */}
-                    <div className="single-menu-wrapper">
+                    {/* <div className="single-menu-wrapper">
                         <Link to="/faq" className="single-menu">
                             <div className="icon">
                                 <LifeBuoy color="#ffffff" />
@@ -131,7 +131,7 @@ const LeftSidebar = () => {
                             )
                         }
                         
-                        {/* <Link
+                        <Link
                             onClick={handleSettingsClick}
                             aria-expanded={open}
                             className="collapse-btn collapsed single-menu" to="#" role="button">
@@ -139,8 +139,8 @@ const LeftSidebar = () => {
                                 <img src={icons08} alt="icons" />
                             </div>
                             <p>Settings</p>
-                        </Link> */}
-                        {/* <Collapse in={open}>
+                        </Link>
+                        <Collapse in={open}>
                             <ul className="submenu rts-default-sidebar-list">
                                 <li>
                                     <Link to="/faq" className={`${location.pathname === "/faq" ? "active" : ""}`} onClick={handleFaqClick}>
@@ -162,14 +162,14 @@ const LeftSidebar = () => {
                                     </Link>
                                 </li>
                             </ul>
-                        </Collapse> */}
-                        {/* <Link to="/login" className="single-menu">
+                        </Collapse>
+                        <Link to="/login" className="single-menu">
                             <div className="icon">
                                 <LogIn color="#ffffff" />
                             </div>
                             <p>Logout</p>
-                        </Link> */}
-                    </div>
+                        </Link>
+                    </div> */}
                     
                 </div>
 

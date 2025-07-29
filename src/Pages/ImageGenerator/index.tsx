@@ -1,319 +1,225 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import RightSidebar from "./RightSidebar";
+import React, { useEffect, useState } from "react";
+import { SendHorizontal } from 'lucide-react';
 
-//import images
-import avatar03 from "assets/images/avatar/03.png";
-import avatar04 from "assets/images/avatar/04.png";
-import generator04 from "assets/images/generator/04.jpg";
-import generator05 from "assets/images/generator/05.jpg";
-import generator06 from "assets/images/generator/06.jpg";
-import generator07 from "assets/images/generator/07.jpg";
-import icon15 from "assets/images/icons/15.png";
-import useSidebarToggle from "Common/UseSideberToggleHooks";
 
-const ImageGenerator = () => {
-    const themeSidebarToggle = useSidebarToggle();
-    useEffect(() => {
-        document.body.classList.add("chatbot");
+type Role = "user" | "assistant";
+type MsgType = "text" | "image";
 
-        return () => {
-            document.body.classList.remove("chatbot");
+interface ChatMessage {
+  id: string;
+  role: Role;
+  type: MsgType;
+  content: string;
+  createdAt: string;
+  lucidlayers_url?: string;
+}
+
+interface ChatResponse {
+  messages: ChatMessage[];
+}
+
+const ChatMessages: React.FC = () => {
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [input, setInput] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [modalImage, setModalImage] = useState<ChatMessage | null>(null);
+
+  const fetchChat = async () => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const res = await fetch("/api/chat/images", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+      });
+
+      const data: ChatResponse = await res.json();
+      setMessages(data.messages);
+    } catch (err) {
+      console.error("Error fetching chat:", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchChat();
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+
+    const prompt = input.trim();
+    const token = localStorage.getItem("token");
+
+    const tempId = Date.now().toString();
+    const now = new Date().toISOString();
+
+    const userMessage: ChatMessage = {
+      id: `${tempId}-prompt`,
+      role: "user",
+      type: "text",
+      content: prompt,
+      createdAt: now,
+    };
+
+    setMessages((prev) => [...prev, userMessage]);
+    setInput("");
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/image/generate-image", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        body: JSON.stringify({ prompt }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.cloudinary_url) {
+        const aiMessage: ChatMessage = {
+          id: `${tempId}-image`,
+          role: "assistant",
+          type: "image",
+          content: data.cloudinary_url,
+          createdAt: now,
+          lucidlayers_url: data.lucidlayers_url,
         };
-    }, []);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const distanceFromBottom = document.documentElement.scrollHeight - window.innerHeight - window.scrollY;
+        setMessages((prev) => [...prev, aiMessage]);
+      }
+    } catch (err) {
+      console.error("Image generation error:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-            const threshold = 200;
-            const searchForm: any = document.querySelector('.chatbot .search-form');
+  const handleImageClick = (msg: ChatMessage) => {
+    setModalImage(msg);
+  };
 
-            if (distanceFromBottom < threshold) {
-                searchForm.classList.add('active');
-            } else {
-                searchForm.classList.remove('active');
-            }
-        };
+  const handleDownload = (url: string) => {
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "image.png";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-    return (
-        <>
-            <div className={`main-center-content-m-left center-content search-sticky ${themeSidebarToggle ? "collapsed" : ""}`}>
+  const handleShare = (url: string) => {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "AI Generated Image",
+          text: "Check out this image!",
+          url,
+        })
+        .catch((error) => console.error("Error sharing", error));
+    } else {
+      alert("Sharing not supported in your browser.");
+    }
+  };
 
-                {/* <div className="question_answer__wrapper__chatbot">
-                    <div className="single__question__answer">
-                        <div className="question_user">
-                            <div className="left_user_info">
-                                <img src={avatar03} alt="avatar" />
-                                <div className="question__user">what is openup?</div>
-                            </div>
-                            <div className="edit__icon openuptip">
-                                <i className="fa-regular fa-pen-to-square"></i>
-                            </div>
-                        </div>
-                        <div className="answer__area">
-                            <div className="thumbnail">
-                                <img src={avatar04} alt="avatar" />
-                            </div>
-                            <div className="answer_main__wrapper">
-                                <h4 className="common__title">Openup</h4>
-                                <p className="disc">
-                                    The Open Unified Process, is a simplified version of the Rational Unified Process (RUP) used for agile and iterative software development. It was developed within the Eclipse Foundation and is based on the donation of process content by IBM.
-                                </p>
-                                <div className="generated_image__wraper">
-                                    <div className="top-images-area gallery-image-generator">
-                                        <div className="gallery-display-item-wrapper">
-                                            <div className="gallery__images-item one">
-                                                <Link to="#1" className="gallery__images-link">
-                                                    <img src={generator04} alt="generator" />
-                                                </Link>
-                                            </div>
-                                            <div className="gallery__images-item two">
-                                                <Link to="#2" className="gallery__images-link">
-                                                    <img src={generator05} alt="generator" />
-                                                </Link>
-                                            </div>
-                                        </div>
+  return (
+    <div style={{
+    
+    }} className="max-w-7xl md:h-[67vh] h-[75vh] overflow-y-auto  scrollbar-hide   mx-auto mt-8 pl-14 sm:px-20">
+      {/* Chat Messages */}
+      <div className="mb-6 space-y-10">
+      {Array.isArray(messages) && messages.length > 0 ? (
+  messages.map((msg) => (
+    <div
+      key={msg.id}
+      className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+    >
+      <div
+        className={`rounded-xl flex justify-center items-center flex-col py-1 max-w-xs shadow-md text-white`}
+      >
+        {msg.type === "text" ? (
+          <p className="bg-[#151a24] px-4 py-1  rounded-xl text-white">{msg.content}</p>
+        ) : (
+          <img
+            onClick={() => handleImageClick(msg)}
+            src={msg.content}
+            alt="Generated"
+            className="rounded-lg cursor-pointer hover:scale-150 scale-125 transition duration-200"
+          />
+        )}
+      </div>
+    </div>
+  ))
+) : (
+  <div className="text-center text-white text-xl mt-10">
+     No messages found. <br />
+    {/* <span className="text-yellow-400">Upgrade your plan to generate images.</span> */}
+  </div>
+)}
 
+      </div>
 
+      {/* Input */}
+      <form onSubmit={handleSubmit} className="flex gap-2 fixed bottom-10 w-[85vw] sm:w-[45vw]  bg-[#121b32] rounded-full py-4 px-5">
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Ask anything..."
+          className="flex-grow p-2  rounded-lg text-white"
+          disabled={loading}
+        />
+        
+        <button
+  type="submit"
+  disabled={loading || !input.trim()}
+  className="bg-[#2563EB] text-white px-3 py-3 rounded-full w-fit flex items-center gap-2"
+>
+  {loading ? "Generating…" : <SendHorizontal className="w-10  h-10" />}
+</button>
+      </form>
 
-                                        <div className="gallery__lightbox" id="1">
-                                            <div className="gallery__lightbox-content">
-                                                <Link to="#0" className="close">
-                                                    ×
-                                                </Link>
-                                                <img src={generator04} className="gallery__lightbox-image" />
-                                                <Link to="#2" className="next">
-                                                    <i className="fas fa-chevron-right"></i>
-                                                </Link>
-                                            </div>
-                                        </div>
-                                        <div className="gallery__lightbox" id="2">
-                                            <div className="gallery__lightbox-content">
-                                                <Link to="#0" className="close">
-                                                    ×
-                                                </Link>
-                                                <img src={generator05} className="gallery__lightbox-image" />
-                                                <Link to="#1" className="back">
-                                                    <i className="fas fa-chevron-left"></i>
-                                                </Link>
-                                            </div>
-                                        </div>
+      {/* Modal for Fullscreen Image */}
+      {modalImage && (
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center">
+          <div className="relative max-w-3xl w-full mx-4">
+            <button
+              onClick={() => setModalImage(null)}
+              className="absolute top-0 z-50 right-0 text-right px-2 py-2 text-black text-3xl"
+            >
+              ✖
+            </button>
 
-                                    </div>
-                                    <div className="bottom-image">
-                                        <p>“A whimsical, bold, and colorful humanoid figure”</p>
-                                        <div className="botton-content-between">
-                                            <div className="left-area">
-                                                <img src={icon15} alt="icons" />
-                                                <span className="tags">Power by openup</span>
-                                            </div>
-                                            <div className="share-reaction-area">
-                                                <ul>
-                                                    <li><Link to="#" className="openuptip"><i className="fa-regular fa-bookmark"></i></Link></li>
-                                                    <li><Link to="#" className="openuptip"><i className="fa-light fa-thumbs-up"></i></Link></li>
-                                                    <li><Link to="#" className="openuptip"><i className="fa-regular fa-thumbs-down"></i></Link></li>
-                                                    <li><Link to="#" className="openuptip"><i className="fa-light fa-download"></i></Link></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="single__question__answer">
-                        <div className="question_user">
-                            <div className="left_user_info">
-                                <img src={avatar03} alt="avatar" />
-                                <div className="question__user">what is openup?</div>
-                            </div>
-                            <div className="edit__icon openuptip">
-                                <i className="fa-regular fa-pen-to-square"></i>
-                            </div>
-                        </div>
-                        <div className="answer__area">
-                            <div className="thumbnail">
-                                <img src={avatar04} alt="avatar" />
-                            </div>
-                            <div className="answer_main__wrapper">
-                                <h4 className="common__title">Openup</h4>
-                                <p className="disc">
-                                    The Open Unified Process, is a simplified version of the Rational Unified Process (RUP) used for agile and iterative software development. It was developed within the Eclipse Foundation and is based on the donation of process content by IBM. OpenUP targets small and colocated teams interested in agile and iterative development and is a lean Unified Process that applies iterative and incremental approaches within a structured lifecycle. It embraces a pragmatic approach and is positioned as an easy and flexible version of RUP [1][2][3]
-                                </p>
-                                <div className="generated_image__wraper">
-                                    <div className="top-images-area gallery-image-generator">
-                                        <div className="gallery-display-item-wrapper">
-                                            <div className="gallery__images-item three">
-                                                <Link to="#3" className="gallery__images-link">
-                                                    <img src={generator06} alt="generator" />
-                                                </Link>
-                                            </div>
-                                            <div className="gallery__images-item four">
-                                                <Link to="#4" className="gallery__images-link">
-                                                    <img src={generator07} alt="generator" />
-                                                </Link>
-                                            </div>
-                                        </div>
+            <img
+              src={modalImage.content}
+              alt="Full Screen"
+              className="rounded-lg w-full max-h-[80vh] object-contain"
+            />
 
-
-
-                                        <div className="gallery__lightbox" id="3">
-                                            <div className="gallery__lightbox-content">
-                                                <Link to="#0" className="close">
-                                                    ×
-                                                </Link>
-                                                <img src={generator06} className="gallery__lightbox-image" />
-                                                <Link to="#4" className="next">
-                                                    <i className="fas fa-chevron-right"></i>
-                                                </Link>
-                                            </div>
-                                        </div>
-                                        <div className="gallery__lightbox" id="4">
-                                            <div className="gallery__lightbox-content">
-                                                <Link to="#0" className="close">
-                                                    ×
-                                                </Link>
-                                                <img src={generator07} className="gallery__lightbox-image" />
-                                                <Link to="#3" className="back">
-                                                    <i className="fas fa-chevron-left"></i>
-                                                </Link>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div className="bottom-image">
-                                        <p>“A whimsical, bold, and colorful humanoid figure”</p>
-                                        <div className="botton-content-between">
-                                            <div className="left-area">
-                                                <img src={icon15} alt="icons" />
-                                                <span className="tags">Power by openup</span>
-                                            </div>
-                                            <div className="share-reaction-area">
-                                                <ul>
-                                                    <li><Link to="#" className="openuptip"><i className="fa-regular fa-bookmark"></i></Link></li>
-                                                    <li><Link to="#" className="openuptip"><i className="fa-light fa-thumbs-up"></i></Link></li>
-                                                    <li><Link to="#" className="openuptip"><i className="fa-regular fa-thumbs-down"></i></Link></li>
-                                                    <li><Link to="#" className="openuptip"><i className="fa-light fa-download"></i></Link></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="single__question__answer">
-                        <div className="question_user">
-                            <div className="left_user_info">
-                                <img src={avatar03} alt="avatar" />
-                                <div className="question__user">how to work Openup chat bot?</div>
-                            </div>
-                            <div className="edit__icon openuptip">
-                                <i className="fa-regular fa-pen-to-square"></i>
-                            </div>
-                        </div>
-                        <div className="answer__area">
-                            <div className="thumbnail">
-                                <img src={avatar04} alt="avatar" />
-                            </div>
-                            <div className="answer_main__wrapper">
-                                <h4 className="common__title">Openup</h4>
-                                <p className="disc">
-                                    Working with a chatbot involves several steps, from designing and building the bot to deploying and maintaining it. Here's a general overview of how to work with a chatbot:
-                                </p>
-                                <div className="order_list_answer">
-                                    <ol>
-                                        <li>
-                                            <p>Define the Purpose: Determine the purpose and goals of the chatbot. What tasks or interactions do you want the bot to handle? Who is the target audience?</p>
-                                        </li>
-                                        <li>
-                                            <p>Define the Purpose: Determine the purpose and goals of the chatbot. What tasks or interactions do you want the bot to handle? Who is the target audience?</p>
-                                        </li>
-                                    </ol>
-                                </div>
-                                <div className="generated_image__wraper">
-                                    <div className="top-images-area gallery-image-generator">
-                                        <div className="gallery-display-item-wrapper">
-                                            <div className="gallery__images-item one">
-                                                <Link to="#1" className="gallery__images-link">
-                                                    <img src={generator04} alt="generator" />
-                                                </Link>
-                                            </div>
-                                            <div className="gallery__images-item two">
-                                                <Link to="#2" className="gallery__images-link">
-                                                    <img src={generator05} alt="generator" />
-                                                </Link>
-                                            </div>
-                                        </div>
-
-
-
-                                        <div className="gallery__lightbox" id="1">
-                                            <div className="gallery__lightbox-content">
-                                                <Link to="#" className="close">
-                                                    ×
-                                                </Link>
-                                                <img src={generator04} className="gallery__lightbox-image" />
-                                                <Link to="#2" className="next">
-                                                    <i className="fas fa-chevron-right"></i>
-                                                </Link>
-                                            </div>
-                                        </div>
-                                        <div className="gallery__lightbox" id="2">
-                                            <div className="gallery__lightbox-content">
-                                                <Link to="#" className="close">
-                                                    ×
-                                                </Link>
-                                                <img src={generator05} className="gallery__lightbox-image" />
-                                                <Link to="#1" className="back">
-                                                    <i className="fas fa-chevron-left"></i>
-                                                </Link>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div className="bottom-image">
-                                        <p>“A whimsical, bold, and colorful humanoid figure”</p>
-                                        <div className="botton-content-between">
-                                            <div className="left-area">
-                                                <img src={icon15} alt="icons" />
-                                                <span className="tags">Power by openup</span>
-                                            </div>
-                                            <div className="share-reaction-area">
-                                                <ul>
-                                                    <li><Link to="#" className="openuptip"><i className="fa-regular fa-bookmark"></i></Link></li>
-                                                    <li><Link to="#" className="openuptip"><i className="fa-light fa-thumbs-up"></i></Link></li>
-                                                    <li><Link to="#" className="openuptip"><i className="fa-regular fa-thumbs-down"></i></Link></li>
-                                                    <li><Link to="#" className="openuptip"><i className="fa-light fa-download"></i></Link></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
-
-
-                <form action="#" className="search-form">
-                    <input type="text" placeholder="Describe what you want to generate..." />
-                    <button><i className="fa-regular fa-arrow-up"></i></button>
-                </form>
-                <div className="copyright-area-bottom">
-                    <p> <Link to="#">Lucid Layers©</Link> 2025. All Rights Reserved.</p>
-                </div>
+            <div className="flex justify-center mt-4 gap-4">
+              <button
+                onClick={() => handleDownload(modalImage.content)}
+                className="bg-green-600 text-white px-4 py-2 rounded-lg"
+              >
+                Download
+              </button>
+              <button
+                onClick={() => handleShare(modalImage.content)}
+                className="bg-indigo-600 text-white px-4 py-2 rounded-lg"
+              >
+                Share
+              </button>
             </div>
-
-            <RightSidebar />
-        </>
-    );
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
-export default ImageGenerator;
+export default ChatMessages;
