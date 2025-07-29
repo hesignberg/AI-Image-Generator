@@ -37,6 +37,9 @@ const ImageTabs = () => {
     const fetchImages = async () => {
         try {
             const token = localStorage.getItem('token');
+            if (!token) {
+                return;
+            }
             const response = await axios.get<{ images: Image[] }>('/api/image/my-images', {
                 headers: {
                     Authorization: `Bearer ${token}`

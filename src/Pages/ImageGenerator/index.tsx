@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { SendHorizontal } from 'lucide-react';
-
+import { useNavigate } from "react-router-dom";
 
 type Role = "user" | "assistant";
 type MsgType = "text" | "image";
@@ -23,6 +23,8 @@ const ChatMessages: React.FC = () => {
   const [input, setInput] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [modalImage, setModalImage] = useState<ChatMessage | null>(null);
+  const [showLoginPopup, setShowLoginPopup] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const fetchChat = async () => {
     try {
@@ -53,6 +55,11 @@ const ChatMessages: React.FC = () => {
 
     const prompt = input.trim();
     const token = localStorage.getItem("token");
+
+    if (!token) {
+      setShowLoginPopup(true); // Show popup if not logged in
+      return;
+    }
 
     const tempId = Date.now().toString();
     const now = new Date().toISOString();
@@ -218,6 +225,37 @@ const ChatMessages: React.FC = () => {
           </div>
         </div>
       )}
+     {showLoginPopup && (
+  <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 px-4">
+    <div className="bg-[#1f2937] w-full max-w-sm sm:max-w-md md:max-w-lg rounded-xl shadow-2xl p-6 sm:p-8 text-center border border-gray-700">
+      <h2 className="text-xl sm:text-2xl font-semibold mb-3 text-white">
+        Login Required
+      </h2>
+      <p className="text-sm sm:text-xl text-gray-400 mb-6">
+        Please login to generate images.
+      </p>
+      <div className="flex justify-center gap-3 flex-wrap">
+        <button
+          onClick={() => setShowLoginPopup(false)}
+          className="px-5 py-2 text-sm sm:text-xl bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition duration-200"
+        >
+          Cancel
+        </button>
+        <button
+          onClick={() => {
+            setShowLoginPopup(false);
+            navigate("/login");
+          }}
+          className="px-5 py-2 text-sm sm:text-xl bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition duration-200"
+        >
+          Login
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+
     </div>
   );
 };
