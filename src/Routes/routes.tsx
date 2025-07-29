@@ -27,9 +27,7 @@ const routes: RouteProps[] = [
     {
         path: "/image-generator",
         component: (
-          <ProtectedRoute user={user}>
             <ImageGenerator />
-          </ProtectedRoute>
         ),
       },
     { path: "/voicegenerator", component: <VoiceGenerator /> },
