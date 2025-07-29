@@ -10,21 +10,31 @@ import Register from "Pages/Auth/Register";
 import Faq from "Pages/Settings/Faq";
 import Login from "Pages/Auth/Login";
 import ResetPassword from "Pages/Auth/ResetPassword";
-
+import Profile from "Pages/profile";
+import ProtectedRoute from "ThemeLayout/ProtectedRoute";
 export interface RouteProps {
     path: string;
     component: ReactElement;
 }
-
+const storedUser = localStorage.getItem('user');
+const user = storedUser ? JSON.parse(storedUser) : null;
 const routes: RouteProps[] = [
     { path: "/", component: <Dashboard /> },
     { path: "/community-feed", component: <CommunityFeed /> },
     { path: "/community-details", component: <CommunityDetails /> },
     { path: "/manage-subscription", component: <ManageSubscription /> },
     { path: "/chatbot", component: <Chatbot /> },
-    { path: "/image-generator", component: <ImageGenerator /> },
+    {
+        path: "/image-generator",
+        component: (
+          <ProtectedRoute user={user}>
+            <ImageGenerator />
+          </ProtectedRoute>
+        ),
+      },
     { path: "/voicegenerator", component: <VoiceGenerator /> },
     { path: "/faq", component: <Faq /> },
+    { path: "/profile", component: <Profile /> },
 ];
 
 const nonAuthRoutes: RouteProps[] = [

@@ -40,7 +40,7 @@ const CommunityFeed = () => {
                                         Image
                                     </Nav.Link>
                                 </Nav.Item>
-                                <Nav.Item as="li" role="presentation">
+                                {/* <Nav.Item as="li" role="presentation">
                                     <Nav.Link as="button" eventKey="profile">
                                         <Film color="#ffffff" size={20} />
                                         Video
@@ -51,7 +51,7 @@ const CommunityFeed = () => {
                                         <Box color="#ffffff" size={20} />
                                         3D Model
                                     </Nav.Link>
-                                </Nav.Item>
+                                </Nav.Item> */}
                             </Nav>
                         </div>
 
