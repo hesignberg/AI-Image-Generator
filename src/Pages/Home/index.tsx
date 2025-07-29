@@ -36,7 +36,7 @@ const Home = () => {
                             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div className="single-image-generator">
                                     <Link to="image-generator" className="thumbnail">
-                                        <img src="https://ideogram.ai/assets/image/lossless/response/GaetRe7WTWG-kyBWCSrTWw" alt="images" />
+                                        <img src="https://res.cloudinary.com/dxf1ecdlq/image/upload/v1753795180/image-generator_fhdgbf.webp" alt="images" />
                                     </Link>
                                     <div className="inner-content">
                                         <div className="left-content-area">
@@ -52,7 +52,7 @@ const Home = () => {
                             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div className="single-image-generator">
                                     <Link to="/" className="thumbnail">
-                                        <img src="https://ideogram.ai/assets/image/lossless/response/_JrZ-sQ3QGmM_j7mXfonwA" alt="images" />
+                                        <img src="https://res.cloudinary.com/dxf1ecdlq/image/upload/v1753795179/image2_sw9t71.webp" alt="images" />
                                     </Link>
                                     <div className="inner-content">
                                         <div className="left-content-area">
