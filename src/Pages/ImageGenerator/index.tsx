@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { SendHorizontal } from 'lucide-react';
+import { SendHorizontal } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 type Role = "user" | "assistant";
@@ -135,44 +135,52 @@ const ChatMessages: React.FC = () => {
   };
 
   return (
-    <div style={{
-    
-    }} className="max-w-7xl md:h-[67vh] h-[75vh] overflow-y-auto  scrollbar-hide   mx-auto mt-8 pl-14 sm:px-20">
+    <div
+      style={{}}
+      className="max-w-7xl md:h-[67vh] h-[75vh] overflow-y-auto  scrollbar-hide   mx-auto mt-8 pl-14 sm:px-20"
+    >
       {/* Chat Messages */}
       <div className="mb-6 space-y-10">
-      {Array.isArray(messages) && messages.length > 0 ? (
-  messages.map((msg) => (
-    <div
-      key={msg.id}
-      className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-    >
-      <div
-        className={`rounded-xl flex justify-center items-center flex-col py-1 max-w-xs shadow-md text-white`}
-      >
-        {msg.type === "text" ? (
-          <p className="bg-[#151a24] px-4 py-1  rounded-xl text-white">{msg.content}</p>
+        {Array.isArray(messages) && messages.length > 0 ? (
+          messages.map((msg) => (
+            <div
+              key={msg.id}
+              className={`flex ${
+                msg.role === "user" ? "justify-end" : "justify-start"
+              }`}
+            >
+              <div
+                className={`rounded-xl flex justify-center items-center flex-col py-1 max-w-xs shadow-md text-white`}
+              >
+                {msg.type === "text" ? (
+                  <p className="bg-[#151a24] px-4 py-1  rounded-xl text-white">
+                    {msg.content}
+                  </p>
+                ) : (
+                  <img
+                    onClick={() => handleImageClick(msg)}
+                    src={msg.content}
+                    alt="Generated"
+                    className="rounded-lg cursor-pointer hover:scale-150 scale-125 transition duration-200"
+                  />
+                )}
+              </div>
+            </div>
+          ))
         ) : (
-          <img
-            onClick={() => handleImageClick(msg)}
-            src={msg.content}
-            alt="Generated"
-            className="rounded-lg cursor-pointer hover:scale-150 scale-125 transition duration-200"
-          />
+          <div className="text-center text-white text-xl mt-10">
+            No messages found. <br />
+            {/* <span className="text-yellow-400">Upgrade your plan to generate images.</span> */}
+          </div>
         )}
-      </div>
-    </div>
-  ))
-) : (
-  <div className="text-center text-white text-xl mt-10">
-     No messages found. <br />
-    {/* <span className="text-yellow-400">Upgrade your plan to generate images.</span> */}
-  </div>
-)}
-
       </div>
 
       {/* Input */}
-      <form onSubmit={handleSubmit} className="flex gap-2 fixed bottom-10 w-[85vw] sm:w-[45vw]  bg-[#121b32] rounded-full py-4 px-5">
+      <form
+        onSubmit={handleSubmit}
+        className="flex gap-2 fixed bottom-10 bg-[#121b32] rounded-full py-4 px-5 image-generator-input"
+        
+      >
         <input
           type="text"
           value={input}
@@ -181,14 +189,14 @@ const ChatMessages: React.FC = () => {
           className="flex-grow p-2  rounded-lg text-white"
           disabled={loading}
         />
-        
+
         <button
-  type="submit"
-  disabled={loading || !input.trim()}
-  className="bg-[#2563EB] text-white px-3 py-3 rounded-full w-fit flex items-center gap-2"
->
-  {loading ? "Generating…" : <SendHorizontal className="w-10  h-10" />}
-</button>
+          type="submit"
+          disabled={loading || !input.trim()}
+          className="bg-[#2563EB] text-white px-3 py-3 rounded-full w-fit flex items-center gap-2"
+        >
+          {loading ? "Generating…" : <SendHorizontal className="w-10  h-10" />}
+        </button>
       </form>
 
       {/* Modal for Fullscreen Image */}
@@ -225,37 +233,35 @@ const ChatMessages: React.FC = () => {
           </div>
         </div>
       )}
-     {showLoginPopup && (
-  <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 px-4">
-    <div className="bg-[#1f2937] w-full max-w-sm sm:max-w-md md:max-w-lg rounded-xl shadow-2xl p-6 sm:p-8 text-center border border-gray-700">
-      <h2 className="text-xl sm:text-2xl font-semibold mb-3 text-white">
-        Login Required
-      </h2>
-      <p className="text-sm sm:text-xl text-gray-400 mb-6">
-        Please login to generate images.
-      </p>
-      <div className="flex justify-center gap-3 flex-wrap">
-        <button
-          onClick={() => setShowLoginPopup(false)}
-          className="px-5 py-2 text-sm sm:text-xl bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition duration-200"
-        >
-          Cancel
-        </button>
-        <button
-          onClick={() => {
-            setShowLoginPopup(false);
-            navigate("/login");
-          }}
-          className="px-5 py-2 text-sm sm:text-xl bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition duration-200"
-        >
-          Login
-        </button>
-      </div>
-    </div>
-  </div>
-)}
-
-
+      {showLoginPopup && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 px-4">
+          <div className="bg-[#1f2937] w-full max-w-sm sm:max-w-md md:max-w-lg rounded-xl shadow-2xl p-6 sm:p-8 text-center border border-gray-700">
+            <h2 className="text-xl sm:text-2xl font-semibold mb-3 text-white">
+              Login Required
+            </h2>
+            <p className="text-sm sm:text-xl text-gray-400 mb-6">
+              Please login to generate images.
+            </p>
+            <div className="flex justify-center gap-3 flex-wrap">
+              <button
+                onClick={() => setShowLoginPopup(false)}
+                className="px-5 py-2 text-sm sm:text-xl bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition duration-200"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  setShowLoginPopup(false);
+                  navigate("/login");
+                }}
+                className="px-5 py-2 text-sm sm:text-xl bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition duration-200"
+              >
+                Login
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
