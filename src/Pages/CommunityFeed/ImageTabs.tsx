@@ -40,7 +40,7 @@ const ImageTabs = () => {
             if (!token) {
                 return;
             }
-            const response = await axios.get<{ images: Image[] }>('/api/image/my-images', {
+            const response = await axios.get<{ images: Image[] }>('http://localhost:5000/api/image/my-images', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

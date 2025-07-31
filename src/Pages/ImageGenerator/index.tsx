@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { SendHorizontal } from "lucide-react";
+import { SendHorizontal, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 type Role = "user" | "assistant";
@@ -30,7 +30,7 @@ const ChatMessages: React.FC = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch("/api/chat/images", {
+      const res = await fetch("http://localhost:5000/api/chat/images", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -77,7 +77,7 @@ const ChatMessages: React.FC = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/image/generate-image", {
+      const res = await fetch("http://localhost:5000/api/image/generate-image", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -137,7 +137,7 @@ const ChatMessages: React.FC = () => {
   return (
     <div
       style={{}}
-      className="max-w-7xl md:h-[67vh] h-[75vh] overflow-y-auto  scrollbar-hide   mx-auto mt-8 pl-14 sm:px-20"
+      className="md:h-[67vh] h-[75vh] overflow-y-auto scrollbar-hide mx-auto mt-8 pl-14 chat-messages-container"
     >
       {/* Chat Messages */}
       <div className="mb-6 space-y-10">
@@ -150,7 +150,7 @@ const ChatMessages: React.FC = () => {
               }`}
             >
               <div
-                className={`rounded-xl flex justify-center items-center flex-col py-1 max-w-xs shadow-md text-white`}
+                className={`rounded-xl flex justify-center items-center flex-col py-4 max-w-xl shadow-md text-white rounded-xl`}
               >
                 {msg.type === "text" ? (
                   <p className="bg-[#151a24] px-4 py-1  rounded-xl text-white">
@@ -161,7 +161,7 @@ const ChatMessages: React.FC = () => {
                     onClick={() => handleImageClick(msg)}
                     src={msg.content}
                     alt="Generated"
-                    className="rounded-lg cursor-pointer hover:scale-150 scale-125 transition duration-200"
+                    className="rounded-lg cursor-pointer scale-125 transition duration-200 hover:brightness-125"
                   />
                 )}
               </div>
@@ -201,19 +201,19 @@ const ChatMessages: React.FC = () => {
 
       {/* Modal for Fullscreen Image */}
       {modalImage && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center">
-          <div className="relative max-w-3xl w-full mx-4">
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-end justify-center p-4">
+          <div className="relative max-w-6xl w-full mx-4">
             <button
               onClick={() => setModalImage(null)}
-              className="absolute top-0 z-50 right-0 text-right px-2 py-2 text-black text-3xl"
+              className="absolute top-0 z-50 right-0 text-right text-white text-3xl close-btn"
             >
-              ✖
+              <X />
             </button>
 
             <img
               src={modalImage.content}
               alt="Full Screen"
-              className="rounded-lg w-full max-h-[80vh] object-contain"
+              className="rounded-lg w-full max-h-[80vh] object-contain md:max-h-[70vh]"
             />
 
             <div className="flex justify-center mt-4 gap-4">
